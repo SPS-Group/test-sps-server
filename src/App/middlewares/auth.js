@@ -1,6 +1,5 @@
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
-const { log } = require('console');
 
 const authMiddleware = async (req, res, next) => {
   const authHeader = req.headers.authorization;

@@ -1,11 +1,11 @@
 // usuarioController.js
 
 class Usuario {
-  constructor(id, nome, email) {
-      this.id = id;
-      this.nome = nome;
-      this.email = email;
-  }
+    constructor(id, nome, email) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+    }
 }
 
 class UsuarioController {
@@ -43,15 +43,15 @@ class UsuarioController {
       return false;
   }
 
-  // Delete
-  deletarUsuario(id) {
-      const index = this.usuarios.findIndex(usuario => usuario.id === id);
-      if (index !== -1) {
-          this.usuarios.splice(index, 1);
-          return true;
-      }
-      return false;
-  }
+    // Delete
+    deletarUsuario(id) {
+        const index = this.usuarios.findIndex(usuario => usuario.id === id);
+        if (index !== -1) {
+            this.usuarios.splice(index, 1);
+            return true;
+        }
+        return false;
+    }
 }
 
 module.exports = UsuarioController;

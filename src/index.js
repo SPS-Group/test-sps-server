@@ -1,12 +1,14 @@
 const routes = require("./routes");
 const express = require('express')
 const authMiddleware = require("./App/middlewares/auth");
+require('dotenv').config();
 const app = express()
-const port = 3000
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on http://localhost:${process.env.PORT}`);
+});
+
+app.use(express.json());
 
 app.use(authMiddleware)
 

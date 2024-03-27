@@ -5,7 +5,6 @@ const usuarioController = new UsuarioController();
 
 // Rota para criar um usuário
 routes.post('/usuarios', (req, res) => {
-  console.log(req);
   const { id, nome, email } = req.body;
   usuarioController.criarUsuario(id, nome, email);
   res.send('Usuário criado com sucesso');
@@ -50,25 +49,4 @@ routes.delete('/usuarios/:id', (req, res) => {
     res.status(404).send('Usuário não encontrado');
   }
 });
-
-// routes.get("/login", (req, res) => {
-//   res.send("login");
-// });
-
-// routes.post('/', (req, res) => {
-//   res.send('Hello World! - post')
-// })
-
-// routes.get('/', (req, res) => {
-//   res.send('Hello World! - get')
-// })
-
-// routes.put('/', (req, res) => {
-//   res.send('Hello World! - update')
-// })
-
-// routes.delete('/', (req, res) => {
-//   res.send('Hello World! - delete')
-// })
-
 module.exports = routes;
