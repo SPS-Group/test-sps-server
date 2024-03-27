@@ -1,13 +1,13 @@
-const express = require("express");
 const routes = require("./routes");
-const cors = require("cors");
+const express = require('express')
+const authMiddleware = require("./App/middlewares/auth");
+const app = express()
+const port = 3000
 
-const app = express();
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
 
-app.use(cors());
+app.use(authMiddleware)
 
 app.use(routes);
-
-app.listen(process.env.PORT, () => {
-  console.log("Server is running on http://localhost:3000");
-});
