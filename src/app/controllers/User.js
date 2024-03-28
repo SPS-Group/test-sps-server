@@ -1,21 +1,20 @@
-// usuarioController.js
-
 class Usuario {
-    constructor(id, nome, email) {
+    constructor(id, name, email, password) {
         this.id = id;
-        this.nome = nome;
+        this.name = name;
         this.email = email;
+        this.password = password;
     }
 }
 
 class UsuarioController {
   constructor() {
-      this.usuarios = [];
+      this.usuarios = [{ id: 2, name: "admin", email: "admin@spsgroup.com.br", type: "admin", password: "1234" }];
   }
 
   // Create
-  criarUsuario(id, nome, email) {
-      const usuario = new Usuario(id, nome, email);
+  criarUsuario(id, name, email, password) {
+      const usuario = new Usuario(id, name, email, password);
       this.usuarios.push(usuario);
   }
 
@@ -29,11 +28,11 @@ class UsuarioController {
   }
 
   // Update
-  atualizarUsuario(id, nome, email) {
+  atualizarUsuario(id, name, email, password) {
       const usuario = this.buscarUsuarioPorId(id);
       if (usuario) {
-          if (nome !== undefined) {
-              usuario.nome = nome;
+          if (name !== undefined) {
+              usuario.name = name;
           }
           if (email !== undefined) {
               usuario.email = email;
@@ -52,6 +51,10 @@ class UsuarioController {
         }
         return false;
     }
+
+    buscarUsuarioPorEmail(email) {
+        return this.usuarios.find(usuario => usuario.email === email);
+    }
 }
 
-module.exports = UsuarioController;
+module.exports = new UsuarioController();

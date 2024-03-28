@@ -11,7 +11,7 @@ const authMiddleware = async (req, res, next) => {
   const [, token] = authHeader.split(' ');
 
   try {
-    const decoded = await promisify(jwt.verify)(token, "test@senha");
+    const decoded = await promisify(jwt.verify)(token, process.env.KEY);
     req.userId = decoded.id;
     return next();
   } catch (error) {
