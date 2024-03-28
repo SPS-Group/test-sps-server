@@ -13,8 +13,8 @@ class UsuarioController {
   }
 
   // Create
-  criarUsuario(id, name, email, password) {
-      const usuario = new Usuario(id, name, email, password);
+  criarUsuario(name, email, password) {
+      const usuario = new Usuario(this.usuarios.length + 1, name, email, password);
       this.usuarios.push(usuario);
   }
 

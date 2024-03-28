@@ -5,8 +5,8 @@ const routes = Router();
 
 // Rota para criar um usuário
 routes.post('/users', (req, res) => {
-  const { id, name, email } = req.body;
-  usuarioController.criarUsuario(id, name, email);
+  const {  name, email, password } = req.body;
+  usuarioController.criarUsuario(name, email, password);
   res.send('Usuário criado com sucesso');
 });
 
