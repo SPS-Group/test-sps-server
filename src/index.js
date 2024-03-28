@@ -1,13 +1,24 @@
-const express = require("express");
 const routes = require("./routes");
-const cors = require("cors");
+const express = require('express');
+const authMiddleware = require("./app/middlewares/auth");
+const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 
 app.use(cors());
 
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on http://localhost:${process.env.PORT}`);
+});
+
+app.use(express.json());
 app.use(routes);
 
-app.listen(process.env.PORT, () => {
-  console.log("Server is running on http://localhost:3000");
+app.use((req, res, next) => {
+  if (req.originalUrl === '/login') {
+      next();
+  } else {
+      authMiddleware(req, res, next);
+  }
 });
